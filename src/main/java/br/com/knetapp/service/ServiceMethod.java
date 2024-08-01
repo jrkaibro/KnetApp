@@ -1,6 +1,6 @@
 package br.com.knetapp.service;
 
-import jdk.nashorn.internal.runtime.logging.Logger;
+
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.printing.PDFPageable;
 
@@ -17,7 +17,6 @@ public class ServiceMethod {
 
 	String tempFile = "temp.pdf";
 
-	@Logger
 	public String intimprimir(String documento) {
 
 		try {

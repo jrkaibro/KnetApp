@@ -39,37 +39,43 @@ public class App {
 			Dimension trayIconSize = tray.getTrayIconSize();
 
 			URL urlimage = App.class.getClassLoader().getResource("icon.png");
-			
-			Image image = ImageIO.read(urlimage);
+
+            assert urlimage != null;
+            Image image = ImageIO.read(urlimage);
 			image = image.getScaledInstance(trayIconSize.width, trayIconSize.height, Image.SCALE_SMOOTH);
-			
-			PopupMenu menu = new PopupMenu();
 
-			MenuItem messageItem = new MenuItem("Version");
-			messageItem.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					JOptionPane.showMessageDialog(null, "1.0.0");
-				}
-			});
-
-			menu.add(messageItem);
-
-			MenuItem closeItem = new MenuItem("Exit");
-			closeItem.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					System.exit(0);
-				}
-			});
-
-			menu.add(closeItem);
-
-			TrayIcon icon = new TrayIcon(image, "Serviço de impressão ativado!.", menu);
+			TrayIcon icon = getTrayIcon(image);
 			tray.add(icon);
 			
 		}
 	}
-	
-	
+
+	private static TrayIcon getTrayIcon(Image image) {
+		PopupMenu menu = new PopupMenu();
+
+		MenuItem messageItem = new MenuItem("Version");
+		messageItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showMessageDialog(null, "1.0.0");
+			}
+		});
+
+		menu.add(messageItem);
+
+		MenuItem closeItem = new MenuItem("Exit");
+		closeItem.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+
+		menu.add(closeItem);
+
+		TrayIcon icon = new TrayIcon(image, "service print actived", menu);
+		return icon;
+	}
+
+
 	public static String urlaccess() {    
 		    
 		int responseCode = 0;
