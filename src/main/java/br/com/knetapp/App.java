@@ -28,7 +28,7 @@ public class App {
 			
 			String code = urlaccess();
 			
-			if (code.equals("Serviço offline")) {
+			if (code.equals("offline")) {
 			  ServerPublisher server = new ServerPublisher();
 			  server.main();
 			}
@@ -45,7 +45,7 @@ public class App {
 			
 			PopupMenu menu = new PopupMenu();
 
-			MenuItem messageItem = new MenuItem("Versão");
+			MenuItem messageItem = new MenuItem("Version");
 			messageItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					JOptionPane.showMessageDialog(null, "1.0.0");
@@ -54,7 +54,7 @@ public class App {
 
 			menu.add(messageItem);
 
-			MenuItem closeItem = new MenuItem("Sair");
+			MenuItem closeItem = new MenuItem("Exit");
 			closeItem.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					System.exit(0);
@@ -84,9 +84,9 @@ public class App {
 		}
 
 		if (responseCode == 200) {
-			retorno = "Serviço online";
+			retorno = "online";
 		} else {
-			retorno = "Serviço offline";
+			retorno = "offline";
 		}
 		    
 		return retorno;
